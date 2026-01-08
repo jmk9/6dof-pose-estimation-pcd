@@ -61,6 +61,6 @@ roslaunch pcd_6dof_pose pcd_6dof.launch
 
 ## Notes
 
-- This package is designed to be plugged into an existing perception stack (camera + YOLO + RGBD drogue detector).
+- This package is designed to be plugged into an existing perception stack (camera + YOLO-World + RGBD drogue detector).
 - Frame names such as `camera_depth_optical_frame` and `world` should match your TF tree.
 - DBSCAN thresholds (`eps`, `min_samples`) and z filtering thresholds are tuned for a specific setup and may require adjustment for other sensors/environments.
