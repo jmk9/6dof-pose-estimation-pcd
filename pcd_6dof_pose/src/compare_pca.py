@@ -22,7 +22,7 @@ class PCAPoseComparer:
 
         self.clustered_points = None
         self.save_count = 0
-        rospy.Timer(rospy.Duration(1.0), self.timer_callback, oneshot=False)  # 1초 주기 타이머 시작
+        rospy.Timer(rospy.Duration(1.0), self.timer_callback, oneshot=False)  # start timer with 1-second period
         self.start_time = rospy.Time.now()
 
         self.R_pca = None
@@ -35,10 +35,10 @@ class PCAPoseComparer:
 
         elapsed = (rospy.Time.now() - self.start_time).to_sec()
         if elapsed < 5.0:
-            return  # 5초 대기
+            return  # wait for 5 seconds
 
         if self.save_count >= 10:
-            return  # 10회 저장 후 종료
+            return  # stop after saving 10 times
 
         filename = f"/root/drogue_ws/src/pcd_6dof_pose/cluster/clustered_{self.save_count:02d}.npy"
         np.save(filename, self.clustered_points)
@@ -72,7 +72,7 @@ class PCAPoseComparer:
 
         np_points = np.array(points)
 
-        # --- 필터링 (z-min 기준) ---
+        # --- filtering based on z-min ---
         z_min = np_points[:, 2].min()
         tau = 0.06
         z_thresh = z_min + tau
@@ -82,7 +82,7 @@ class PCAPoseComparer:
             rospy.logwarn("Filtered points too few")
             return
 
-        # --- ✅ DBSCAN 클러스터링 ---
+        # --- DBSCAN clustering ---
         db = DBSCAN(eps=0.05, min_samples=10).fit(filtered)
         labels = db.labels_
 
@@ -98,7 +98,7 @@ class PCAPoseComparer:
             rospy.logwarn("Selected cluster too few")
             return
 
-        # --- 퍼블리시 ---
+        # --- publish ---
         self.filtered_cloud_pub.publish(self.create_cloud(clustered, msg.header.frame_id))
 
         self.clustered_points = clustered.copy()
@@ -116,7 +116,7 @@ class PCAPoseComparer:
         self.R_pca = pca_orientation
 
         # --- WPCA ---
-        # 중심점으로부터의 거리 기반 가중치
+        # distance-based weights from the centroid
         dists = np.linalg.norm(filtered - centroid, axis=1)
         w = 1 / (dists + 1e-6)
         w /= np.sum(w)
@@ -158,7 +158,7 @@ class PCAPoseComparer:
             [0, np.cos(theta_x), -np.sin(theta_x)],
             [0, np.sin(theta_x),  np.cos(theta_x)]
         ])
-        R = Rx @ R  # Z축 회전을 기존 R 앞에 곱함 (local -> rotated)
+        R = Rx @ R  # multiply X-axis rotation in front of original R (local -> rotated)
 
         quat = Rotation.from_matrix(R).as_quat()
         pose = PoseStamped()

@@ -61,7 +61,7 @@ class CompareClustering:
             rospy.logwarn("Filtered points too few")
             return
 
-        # 비교할 클러스터링 알고리즘들
+        # clustering algorithms to compare
         algorithms = {
             "DBSCAN": DBSCAN(eps=0.02, min_samples=20),
             "Agglomerative": AgglomerativeClustering(n_clusters=None, distance_threshold=0.5),

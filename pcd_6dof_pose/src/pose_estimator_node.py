@@ -72,11 +72,11 @@ class YOLOPoseEstimator:
         best_cluster = unique_labels[np.argmax(counts)]
         clustered_points = filtered_points[labels == best_cluster]
 
-        # 클러스터 시각화용 PointCloud
+        # PointCloud for cluster visualization
         filtered_cloud_msg = self.create_cloud_from_xyz(clustered_points, "camera_depth_optical_frame")
         self.filtered_cloud_pub.publish(filtered_cloud_msg)
 
-        # 6D pose 추정
+        # 6D pose estimation
         centroid = np.mean(clustered_points, axis=0)
         cov = np.cov(clustered_points.T)
         eigvals, eigvecs = np.linalg.eigh(cov)
@@ -107,9 +107,9 @@ class YOLOPoseEstimator:
         R = R @ Ry
         quat = Rotation.from_matrix(R).as_quat()
 
-        # --- ✅ 수정된 부분 시작 ---
+        # --- updated section start ---
         pose = PoseStamped()
-        pose.header.stamp = rospy.Time.now()  # ⚠ TF lookup용 시간 확보
+        pose.header.stamp = rospy.Time.now()  # ⚠ ensure timestamp is available for TF lookup
         pose.header.frame_id = "camera_depth_optical_frame"
         pose.pose.position.x = centroid[0]
         pose.pose.position.y = centroid[1]
@@ -125,7 +125,7 @@ class YOLOPoseEstimator:
                                                         pose.header.stamp,
                                                         rospy.Duration(1.0))
             pose_world = tf2_geometry_msgs.do_transform_pose(pose, transform)
-            self.pose_pub.publish(pose_world)  # ⬅ world 기준으로 발행
+            self.pose_pub.publish(pose_world)  # ⬅ publish with world as reference frame
 
             # t = TransformStamped()
             # t.header.stamp = rospy.Time.now()
@@ -140,7 +140,7 @@ class YOLOPoseEstimator:
         except Exception as e:
             rospy.logwarn(f"[TF Transform 실패] {e}")
             return
-        # --- ✅ 수정된 부분 끝 ---
+        # --- updated section end ---
 
     def create_cloud_from_xyz(self, points: np.ndarray, frame_id: str) -> PointCloud2:
         header = std_msgs.msg.Header()
