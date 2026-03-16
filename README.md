@@ -187,7 +187,21 @@ wpca_orientation/               # Saved weighted PCA orientation matrices
 
 ## 📚 Citation
 
-
+```
+@article{JUNG2026122,
+title = {Autonomous charging system via manipulator-UGV docking using zero-shot 6-DoF pose estimation},
+journal = {Alexandria Engineering Journal},
+volume = {134},
+pages = {122-134},
+year = {2026},
+issn = {1110-0168},
+doi = {https://doi.org/10.1016/j.aej.2025.12.015},
+url = {https://www.sciencedirect.com/science/article/pii/S1110016825011871},
+author = {Minkyu Jung and Andrew Jaeyong Choi},
+keywords = {Autonomous docking, 6-doF pose estimation, Open-vocabulary object detection, Point cloud localization, Manipulator inverse kinematics, ROS-based integration},
+abstract = {To ensure long-term field operation of Unmanned Ground Vehicles (UGVs) without human intervention, autonomous charging capability is essential. This paper presents a fully autonomous charging system that enables a UGV to perform path planning, align itself with the charging station, and a 6-DoF manipulator to locate and connect to the charging port without relying on external markers. By combining vision-language detection with geometric reasoning on RGB-D data, the system estimates a complete 6-DoF pose without relying on fiducial markers or task-specific retraining, thereby enhancing adaptability across different docking environments. Specifically, it employs the open-vocabulary object detector YOLO-World to identify the docking port in the RGB image and selects the corresponding 3D position from the depth map. To estimate orientation, the surrounding point cloud is clustered to extract the object shape, from which the without relying on fiducial markers or task-specific retraining, thereby enhancing adaptability across different docking environments. principal axis is computed, resulting in a fully generalizable and marker-free docking pipeline. This 6-DoF pose is used to compute a feasible manipulator configuration through inverse kinematics. The proposed pipeline is integrated into a ROS-based framework and enables precise docking in unstructured outdoor environments without manual supervision. Experimental results demonstrate the robustness and accuracy of the system under real-world conditions, achieving a docking success rate of 90% and an average total operation time of 34.4 s.}
+}
+```
 
 ---
 
