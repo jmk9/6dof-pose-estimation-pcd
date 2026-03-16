@@ -66,8 +66,7 @@ In other words, this package focuses on **pose estimation from filtered 3D data*
 ### Environment
 
 - ROS Noetic
-- catkin workspace
-- Python 3
+- Ubuntu 20.04
 
 ### ROS dependencies
 
