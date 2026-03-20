@@ -5,10 +5,10 @@
 This package estimates the 6-DoF pose of a target object from a filtered point cloud using clustering and PCA-based orientation analysis. It is designed to be integrated into an existing perception pipeline rather than used as a standalone detector.
 
 ![ROS Noetic](https://img.shields.io/badge/ROS-Noetic-blue)
-![Paper](https://img.shields.io/badge/Paper-DOI-blue)](https://doi.org/10.1016/j.aej.2025.12.015)
-![Demo](https://img.shields.io/badge/Demo-YouTube-red)](https://youtu.be/58YqAvVOr8E)
-![Project](https://img.shields.io/badge/Project-Notion-black)](https://www.notion.so/Autonomous-charging-system-via-manipulator-UGV-docking-using-zero-shot-6-DoF-pose-estimation-3297602386468098bb55e4f2c04444df?source=copy_link)
-![Docker Hub](https://img.shields.io/badge/Docker%20Hub-Image-2496ED)](https://hub.docker.com/repository/docker/jmk9/docking-desktop/general)
+[![Paper](https://img.shields.io/badge/Paper-DOI-blue)](https://doi.org/10.1016/j.aej.2025.12.015)
+[![Demo](https://img.shields.io/badge/Demo-YouTube-red)](https://youtu.be/58YqAvVOr8E)
+[![Project](https://img.shields.io/badge/Project-Notion-black)](https://www.notion.so/Autonomous-charging-system-via-manipulator-UGV-docking-using-zero-shot-6-DoF-pose-estimation-3297602386468098bb55e4f2c04444df?source=copy_link)
+[![Docker Hub](https://img.shields.io/badge/Docker%20Hub-Image-2496ED)](https://hub.docker.com/repository/docker/jmk9/docking-desktop/general)
 
 
 ---
