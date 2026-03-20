@@ -8,6 +8,10 @@ This package estimates the 6-DoF pose of a target object from a filtered point c
 ![Python 3](https://img.shields.io/badge/Python-3.x-green)
 ![Point Cloud](https://img.shields.io/badge/Perception-PointCloud-orange)
 ![Pose Estimation](https://img.shields.io/badge/Output-6DoF%20Pose-red)
+![Paper](https://img.shields.io/badge/Paper-DOI-blue)](https://doi.org/10.1016/j.aej.2025.12.015)
+![Demo](https://img.shields.io/badge/Demo-YouTube-red)](https://youtu.be/58YqAvVOr8E)
+![Project](https://img.shields.io/badge/Project-Notion-black)](https://www.notion.so/Autonomous-charging-system-via-manipulator-UGV-docking-using-zero-shot-6-DoF-pose-estimation-3297602386468098bb55e4f2c04444df?source=copy_link)
+
 
 ---
 
@@ -183,6 +187,11 @@ wpca_orientation/               # Saved weighted PCA orientation matrices
 
 ---
 
+## 📄 Paper
+
+[https://doi.org/10.1016/j.aej.2025.12.015](https://doi.org/10.1016/j.aej.2025.12.015)
+
+---
 
 ## 📚 Citation
 
